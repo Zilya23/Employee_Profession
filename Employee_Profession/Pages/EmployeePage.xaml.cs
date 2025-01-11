@@ -12,19 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Employee_Profession.Pages;
 
-namespace Employee_Profession
+namespace Employee_Profession.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для EmployeePage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class EmployeePage : Page
     {
-        public MainWindow()
+        public EmployeePage()
         {
             InitializeComponent();
-            frameNavigate.NavigationService.Navigate(new RolePage());
         }
     }
 }

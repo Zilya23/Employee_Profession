@@ -24,5 +24,15 @@ namespace Employee_Profession.Pages
         {
             InitializeComponent();
         }
+
+        private void btn_back_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new RolePage());
+        }
+
+        private void btn_Employee_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new EmployeePage());
+        }
     }
 }

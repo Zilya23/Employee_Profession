@@ -40,7 +40,7 @@
                 Foreground="#FF1446A3"
                 BorderBrush="#FF1446A3" 
                 Background="#FF80D9ED"
-                Margin="5"/>
+                Margin="5" Click="btn_Employee_Click"/>
 
         <Button x:Name="btn_Department"
                 Content="Отделы"
@@ -61,5 +61,16 @@
                 BorderBrush="#FF1446A3"
                 Background="#FF80D9ED"
                 Margin="5"/>
+
+        <Button x:Name="btn_back"
+                Content="Назад"
+                FontSize="25"
+                Grid.Column="0"
+                Grid.Row="0"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Foreground="#FF1446A3"
+                BorderBrush="#FF1446A3"
+                Background="#FF80D9ED" Click="btn_back_Click"/>
     </Grid>
 </Page>
