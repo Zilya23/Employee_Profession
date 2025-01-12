@@ -22,7 +22,7 @@ namespace Employee_Profession.DataBase
     
         public int ID { get; set; }
         public string Title { get; set; }
-        public Nullable<int> Number_business_rates { get; set; }
+        public int Number_business_rates { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employee> Employee { get; set; }

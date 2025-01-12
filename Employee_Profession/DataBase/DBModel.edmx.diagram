@@ -5,16 +5,16 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="b5ba8b0eb3604882848fe45b7ca5cf3b" Name="Diagram1">
-        <EntityTypeShape EntityType="Employee_ProfesionModel.Department" Width="1.5" PointX="3" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Employee_ProfesionModel.Employee" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="Employee_ProfesionModel.Gender" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Employee_ProfesionModel.Profession" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Employee_ProfesionModel.Profession_Category" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="Employee_ProfesionModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="5.75" IsExpanded="true" />
-        <AssociationConnector Association="Employee_ProfesionModel.FK_Employee_Department" ManuallyRouted="false" />
-        <AssociationConnector Association="Employee_ProfesionModel.FK_Employee_Gender" ManuallyRouted="false" />
-        <AssociationConnector Association="Employee_ProfesionModel.FK_Employee_Profession" ManuallyRouted="false" />
-        <AssociationConnector Association="Employee_ProfesionModel.FK_Profession_Profession_Category" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Employee_ProfesionModel.Department" Width="1.5" PointX="3" PointY="5.25" />
+        <EntityTypeShape EntityType="Employee_ProfesionModel.Employee" Width="1.5" PointX="5.25" PointY="1" />
+        <EntityTypeShape EntityType="Employee_ProfesionModel.Gender" Width="1.5" PointX="3" PointY="7.875" />
+        <EntityTypeShape EntityType="Employee_ProfesionModel.Profession" Width="1.5" PointX="3" PointY="1.75" />
+        <EntityTypeShape EntityType="Employee_ProfesionModel.Profession_Category" Width="1.5" PointX="0.75" PointY="2" />
+        <EntityTypeShape EntityType="Employee_ProfesionModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="5.75" />
+        <AssociationConnector Association="Employee_ProfesionModel.FK_Employee_Department" />
+        <AssociationConnector Association="Employee_ProfesionModel.FK_Employee_Gender" />
+        <AssociationConnector Association="Employee_ProfesionModel.FK_Employee_Profession" />
+        <AssociationConnector Association="Employee_ProfesionModel.FK_Profession_Profession_Category" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -23,6 +23,7 @@ namespace Employee_Profession.DataBase
         public System.DateTime Date_joining_service { get; set; }
         public int ID_Profession { get; set; }
         public int ID_Department { get; set; }
+        public Nullable<System.DateTime> Date_end_service { get; set; }
     
         public virtual Department Department { get; set; }
         public virtual Gender Gender { get; set; }

@@ -1,0 +1,267 @@
+﻿<Page x:Class="Employee_Profession.Pages.EditEmployeePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Employee_Profession.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="EditEmployeePage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Button x:Name="btn_back"
+                Content="Назад"
+                FontSize="25"
+                Grid.Column="0"
+                Grid.Row="0"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Foreground="#FF1446A3"
+                BorderBrush="#FF1446A3"
+                Background="#FF80D9ED" 
+                Click="btn_back_Click"/>
+
+        <TextBlock Text="Сотрудник"
+                   FontSize="30"
+                   Grid.Column="2"
+                   Grid.ColumnSpan="5"
+                   Grid.Row="0"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   Foreground="#FF1446A3"/>
+
+        <Button x:Name="btn_save"
+                Content="Сохранить"
+                FontSize="25"
+                Grid.Column="7"
+                Grid.ColumnSpan="2"
+                Grid.Row="0"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                Foreground="#FF1446A3"
+                BorderBrush="#FF1446A3"
+                Background="#FF80D9ED"
+                Click="btn_save_Click"/>
+
+        <Button x:Name="btn_delete"
+                Content="Удалить"
+                FontSize="25"
+                Grid.Column="6"
+                Grid.ColumnSpan="2"
+                Grid.Row="0"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Foreground="#FF1446A3"
+                BorderBrush="#FF1446A3"
+                Background="#FF80D9ED"
+                Click="btn_delete_Click"/>
+
+        <TextBlock Text="Табельный № "
+                   FontSize="25"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="3"
+                   Grid.Row="2"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Right"
+                   Foreground="#FF1446A3"/>
+        <TextBlock Text="{Binding editEmployee.ID}"
+                   FontSize="25"
+                   Grid.Column="4"
+                   Grid.ColumnSpan="3"
+                   Grid.Row="2"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Left"
+                   Foreground="#FF1446A3"/>
+
+        <TextBlock Text="Фамилия: "
+                   FontSize="25"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="3"
+                   Grid.Row="3"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Right"
+                   Foreground="#FF1446A3"/>
+        <TextBox x:Name="tb_Surname"
+                 Text="{Binding editEmployee.Surname}"
+                 FontSize="20"
+                 Grid.Column="4"
+                 Grid.ColumnSpan="3"
+                 Grid.Row="3"
+                 VerticalAlignment="Center"
+                 Foreground="#FF1446A3"
+                 Margin="5, 2"/>
+
+        <TextBlock Text="Имя: "
+                   FontSize="25"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="3"
+                   Grid.Row="4"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Right"
+                   Foreground="#FF1446A3"/>
+        <TextBox x:Name="tb_Name"
+                 Text="{Binding editEmployee.Name}"
+                 FontSize="20"
+                 Grid.Column="4"
+                 Grid.ColumnSpan="3"
+                 Grid.Row="4"
+                 VerticalAlignment="Center"
+                 Foreground="#FF1446A3"
+                 Margin="5,2"/>
+
+        <TextBlock Text="Отчество: "
+                   FontSize="25"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="3"
+                   Grid.Row="5"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Right"
+                   Foreground="#FF1446A3"/>
+        <TextBox x:Name="tb_Patronymic"
+                 Text="{Binding editEmployee.Patronymic}"
+                 FontSize="20"
+                 Grid.Column="4"
+                 Grid.ColumnSpan="3"
+                 Grid.Row="5"
+                 VerticalAlignment="Center"
+                 Foreground="#FF1446A3"
+                 Margin="5,2"/>
+
+        <TextBlock Text="Дата рождения: "
+                   FontSize="25"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="3"
+                   Grid.Row="6"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Right"
+                   Foreground="#FF1446A3"/>
+        <DatePicker x:Name="dp_Birth"
+                    SelectedDate="{Binding editEmployee.Date_of_birth}"
+                    FontSize="20"
+                    Grid.Column="4"
+                    Grid.ColumnSpan="3"
+                    Grid.Row="6"
+                    VerticalAlignment="Center"
+                    Foreground="#FF1446A3"
+                    Margin="5,2"/>
+
+        <TextBlock Text="Пол: "
+                   FontSize="25"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="3"
+                   Grid.Row="7"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Right"
+                   Foreground="#FF1446A3"/>
+        <ComboBox x:Name="cb_Gender"
+                  SelectedItem="{Binding editEmployee.Gender}"
+                  FontSize="20"
+                  Grid.Column="4"
+                  Grid.ColumnSpan="3"
+                  Grid.Row="7"
+                  VerticalAlignment="Center"
+                  Foreground="#FF1446A3"
+                  Margin="5,2"/>
+
+        <TextBlock Text="Дата начала службы: "
+                   FontSize="25"
+                   Grid.Column="1"
+                   Grid.ColumnSpan="3"
+                   Grid.Row="8"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Right"
+                   Foreground="#FF1446A3"/>
+        <DatePicker x:Name="dp_Joing"
+                    SelectedDate="{Binding editEmployee.Date_joining_service}"
+                    FontSize="20"
+                    Grid.Column="4"
+                    Grid.ColumnSpan="3"
+                    Grid.Row="8"
+                    VerticalAlignment="Center"
+                    Foreground="#FF1446A3"
+                    Margin="5,2"/>
+
+        <TextBlock Text="Дата окончания службы: "
+                   FontSize="25"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="4"
+                   Grid.Row="9"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Right"
+                   Foreground="#FF1446A3"/>
+        <DatePicker x:Name="dp_End"
+                    SelectedDate="{Binding editEmployee.Date_end_service}"
+                    FontSize="20"
+                    Grid.Column="4"
+                    Grid.ColumnSpan="3"
+                    Grid.Row="9"
+                    VerticalAlignment="Center"
+                    Foreground="#FF1446A3"
+                    Margin="5,2"/>
+
+        <TextBlock Text="Профессия: "
+                   FontSize="25"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="4"
+                   Grid.Row="10"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Right"
+                   Foreground="#FF1446A3"/>
+        <ComboBox x:Name="cb_Profession"
+                  SelectedItem="{Binding editEmployee.Profession}"
+                  FontSize="20"
+                  Grid.Column="4"
+                  Grid.ColumnSpan="3"
+                  Grid.Row="10"
+                  VerticalAlignment="Center"
+                  Foreground="#FF1446A3"
+                  Margin="5,2"/>
+
+
+        <TextBlock Text="Отдел: "
+                   FontSize="25"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="4"
+                   Grid.Row="11"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Right"
+                   Foreground="#FF1446A3"/>
+        <ComboBox x:Name="cb_Department"
+                  SelectedItem="{Binding editEmployee.Department}"
+                  FontSize="20"
+                  Grid.Column="4"
+                  Grid.ColumnSpan="3"
+                  Grid.Row="11"
+                  VerticalAlignment="Center"
+                  Foreground="#FF1446A3"
+                  Margin="5,2"/>
+
+    </Grid>
+</Page>

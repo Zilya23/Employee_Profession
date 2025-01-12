@@ -9,6 +9,88 @@
       Title="EmployeePage">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <ListView x:Name="lvEmployee"
+                  ItemsSource="{Binding employees}"
+                  Grid.Column="0" Grid.ColumnSpan="10"
+                  Grid.Row="2" Grid.RowSpan="7"
+                  FontSize="20"
+                  HorizontalAlignment="Stretch"
+                  Foreground="#FF1446A3"
+                  BorderBrush="#FF1446A3"
+                  Background="#FF80D9ED"
+                  Margin=" 10, 10, 10 , 10"
+                  SelectionChanged="lvEmployee_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Таб.№" DisplayMemberBinding="{Binding ID}"/>
+                    <GridViewColumn Header="Фамилия" DisplayMemberBinding="{Binding Surname}"/>
+                    <GridViewColumn Header="Имя" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Отчество" DisplayMemberBinding="{Binding Patronymic}"/>
+                    <GridViewColumn Header="Дата рождения" DisplayMemberBinding="{Binding Date_of_birth, StringFormat=dd.MM.yyyy, ConverterCulture=ru}"/>
+                    <GridViewColumn Header="Пол" DisplayMemberBinding="{Binding Gender.Title}"/>
+                    <GridViewColumn Header="Дата вступления на службу" DisplayMemberBinding="{Binding Date_joining_service, StringFormat=dd.MM.yyyy, ConverterCulture=ru}"/>
+                    <GridViewColumn Header="Профессия" DisplayMemberBinding="{Binding Profession.Title}"/>
+                    <GridViewColumn Header="Отдел" DisplayMemberBinding="{Binding Department.Title}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Button x:Name="btn_back"
+                Content="Назад"
+                FontSize="25"
+                Grid.Column="0"
+                Grid.Row="0"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Foreground="#FF1446A3"
+                BorderBrush="#FF1446A3"
+                Background="#FF80D9ED" 
+                Click="btn_back_Click"/>
+
+        <TextBlock Text="Сотрудники"
+                   FontSize="30"
+                   Grid.Column="2"
+                   Grid.ColumnSpan="5"
+                   Grid.Row="0"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   Foreground="#FF1446A3"/>
+
+        <Button x:Name="btn_add"
+                Content="+"
+                FontSize="25"
+                Grid.Column="8"
+                Grid.Row="0"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                Foreground="#FF1446A3"
+                BorderBrush="#FF1446A3"
+                Background="#FF80D9ED"
+                FontWeight="Bold"
+                Width="40"
+                Height="40"
+                Click="btn_add_Click"/>
     </Grid>
 </Page>

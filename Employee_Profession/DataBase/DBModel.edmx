@@ -4,14 +4,14 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище Employee_ProfesionModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище Employee_ProfesionModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Department">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Title" Type="nvarchar" MaxLength="50" />
-          <Property Name="Number_business_rates" Type="int" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Number_business_rates" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -26,13 +26,14 @@
           <Property Name="Date_joining_service" Type="date" Nullable="false" />
           <Property Name="ID_Profession" Type="int" Nullable="false" />
           <Property Name="ID_Department" Type="int" Nullable="false" />
+          <Property Name="Date_end_service" Type="date" />
         </EntityType>
         <EntityType Name="Gender">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Profession">
           <Key>
@@ -131,76 +132,100 @@
             <End Role="Profession" EntitySet="Profession" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Employee_ProfesionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Employee_ProfesionEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Department" EntityType="Employee_ProfesionModel.Department" />
+          <EntitySet Name="Employee" EntityType="Employee_ProfesionModel.Employee" />
+          <EntitySet Name="Gender" EntityType="Employee_ProfesionModel.Gender" />
+          <EntitySet Name="Profession" EntityType="Employee_ProfesionModel.Profession" />
+          <EntitySet Name="Profession_Category" EntityType="Employee_ProfesionModel.Profession_Category" />
+          <EntitySet Name="sysdiagrams" EntityType="Employee_ProfesionModel.sysdiagrams" />
+          <AssociationSet Name="FK_Employee_Department" Association="Employee_ProfesionModel.FK_Employee_Department">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Gender" Association="Employee_ProfesionModel.FK_Employee_Gender">
+            <End Role="Gender" EntitySet="Gender" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Employee_Profession" Association="Employee_ProfesionModel.FK_Employee_Profession">
+            <End Role="Profession" EntitySet="Profession" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Profession_Profession_Category" Association="Employee_ProfesionModel.FK_Profession_Profession_Category">
+            <End Role="Profession_Category" EntitySet="Profession_Category" />
+            <End Role="Profession" EntitySet="Profession" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="Department">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Number_business_rates" Type="Int32" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_Department" FromRole="Department" ToRole="Employee" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Number_business_rates" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Employee" Relationship="Employee_ProfesionModel.FK_Employee_Department" FromRole="Department" ToRole="Employee" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Surname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Patronymic" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Date_of_birth" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="ID_Gender" Type="Int32" Nullable="false" />
           <Property Name="Date_joining_service" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="ID_Profession" Type="Int32" Nullable="false" />
           <Property Name="ID_Department" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Department" Relationship="Self.FK_Employee_Department" FromRole="Employee" ToRole="Department" />
-          <NavigationProperty Name="Gender" Relationship="Self.FK_Employee_Gender" FromRole="Employee" ToRole="Gender" />
-          <NavigationProperty Name="Profession" Relationship="Self.FK_Employee_Profession" FromRole="Employee" ToRole="Profession" />
+          <Property Name="Date_end_service" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="Department" Relationship="Employee_ProfesionModel.FK_Employee_Department" FromRole="Employee" ToRole="Department" />
+          <NavigationProperty Name="Gender" Relationship="Employee_ProfesionModel.FK_Employee_Gender" FromRole="Employee" ToRole="Gender" />
+          <NavigationProperty Name="Profession" Relationship="Employee_ProfesionModel.FK_Employee_Profession" FromRole="Employee" ToRole="Profession" />
         </EntityType>
         <EntityType Name="Gender">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_Gender" FromRole="Gender" ToRole="Employee" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employee" Relationship="Employee_ProfesionModel.FK_Employee_Gender" FromRole="Gender" ToRole="Employee" />
         </EntityType>
         <EntityType Name="Profession">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ID_Category" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_Profession" FromRole="Profession" ToRole="Employee" />
-          <NavigationProperty Name="Profession_Category" Relationship="Self.FK_Profession_Profession_Category" FromRole="Profession" ToRole="Profession_Category" />
+          <NavigationProperty Name="Employee" Relationship="Employee_ProfesionModel.FK_Employee_Profession" FromRole="Profession" ToRole="Employee" />
+          <NavigationProperty Name="Profession_Category" Relationship="Employee_ProfesionModel.FK_Profession_Profession_Category" FromRole="Profession" ToRole="Profession_Category" />
         </EntityType>
         <EntityType Name="Profession_Category">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Profession" Relationship="Self.FK_Profession_Profession_Category" FromRole="Profession_Category" ToRole="Profession" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Profession" Relationship="Employee_ProfesionModel.FK_Profession_Profession_Category" FromRole="Profession_Category" ToRole="Profession" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
             <PropertyRef Name="diagram_id" />
           </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="principal_id" Type="Int32" Nullable="false" />
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <Association Name="FK_Employee_Department">
-          <End Role="Department" Type="Self.Department" Multiplicity="1" />
-          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <End Type="Employee_ProfesionModel.Department" Role="Department" Multiplicity="1" />
+          <End Type="Employee_ProfesionModel.Employee" Role="Employee" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Department">
               <PropertyRef Name="ID" />
@@ -211,8 +236,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Employee_Gender">
-          <End Role="Gender" Type="Self.Gender" Multiplicity="1" />
-          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <End Type="Employee_ProfesionModel.Gender" Role="Gender" Multiplicity="1" />
+          <End Type="Employee_ProfesionModel.Employee" Role="Employee" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Gender">
               <PropertyRef Name="ID" />
@@ -223,8 +248,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Employee_Profession">
-          <End Role="Profession" Type="Self.Profession" Multiplicity="1" />
-          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <End Type="Employee_ProfesionModel.Profession" Role="Profession" Multiplicity="1" />
+          <End Type="Employee_ProfesionModel.Employee" Role="Employee" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Profession">
               <PropertyRef Name="ID" />
@@ -235,8 +260,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Profession_Profession_Category">
-          <End Role="Profession_Category" Type="Self.Profession_Category" Multiplicity="1" />
-          <End Role="Profession" Type="Self.Profession" Multiplicity="*" />
+          <End Type="Employee_ProfesionModel.Profession_Category" Role="Profession_Category" Multiplicity="1" />
+          <End Type="Employee_ProfesionModel.Profession" Role="Profession" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Profession_Category">
               <PropertyRef Name="ID" />
@@ -246,31 +271,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Employee_ProfesionEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Department" EntityType="Self.Department" />
-          <EntitySet Name="Employee" EntityType="Self.Employee" />
-          <EntitySet Name="Gender" EntityType="Self.Gender" />
-          <EntitySet Name="Profession" EntityType="Self.Profession" />
-          <EntitySet Name="Profession_Category" EntityType="Self.Profession_Category" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
-          <AssociationSet Name="FK_Employee_Department" Association="Self.FK_Employee_Department">
-            <End Role="Department" EntitySet="Department" />
-            <End Role="Employee" EntitySet="Employee" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Employee_Gender" Association="Self.FK_Employee_Gender">
-            <End Role="Gender" EntitySet="Gender" />
-            <End Role="Employee" EntitySet="Employee" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Employee_Profession" Association="Self.FK_Employee_Profession">
-            <End Role="Profession" EntitySet="Profession" />
-            <End Role="Employee" EntitySet="Employee" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Profession_Profession_Category" Association="Self.FK_Profession_Profession_Category">
-            <End Role="Profession_Category" EntitySet="Profession_Category" />
-            <End Role="Profession" EntitySet="Profession" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -279,60 +280,61 @@
           <EntitySetMapping Name="Department">
             <EntityTypeMapping TypeName="Employee_ProfesionModel.Department">
               <MappingFragment StoreEntitySet="Department">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="Number_business_rates" ColumnName="Number_business_rates" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Employee">
             <EntityTypeMapping TypeName="Employee_ProfesionModel.Employee">
               <MappingFragment StoreEntitySet="Employee">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Surname" ColumnName="Surname" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
-                <ScalarProperty Name="Date_of_birth" ColumnName="Date_of_birth" />
-                <ScalarProperty Name="ID_Gender" ColumnName="ID_Gender" />
-                <ScalarProperty Name="Date_joining_service" ColumnName="Date_joining_service" />
-                <ScalarProperty Name="ID_Profession" ColumnName="ID_Profession" />
+                <ScalarProperty Name="Date_end_service" ColumnName="Date_end_service" />
                 <ScalarProperty Name="ID_Department" ColumnName="ID_Department" />
+                <ScalarProperty Name="ID_Profession" ColumnName="ID_Profession" />
+                <ScalarProperty Name="Date_joining_service" ColumnName="Date_joining_service" />
+                <ScalarProperty Name="ID_Gender" ColumnName="ID_Gender" />
+                <ScalarProperty Name="Date_of_birth" ColumnName="Date_of_birth" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Gender">
             <EntityTypeMapping TypeName="Employee_ProfesionModel.Gender">
               <MappingFragment StoreEntitySet="Gender">
-                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Profession">
             <EntityTypeMapping TypeName="Employee_ProfesionModel.Profession">
               <MappingFragment StoreEntitySet="Profession">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
                 <ScalarProperty Name="ID_Category" ColumnName="ID_Category" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Profession_Category">
             <EntityTypeMapping TypeName="Employee_ProfesionModel.Profession_Category">
               <MappingFragment StoreEntitySet="Profession_Category">
-                <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="Employee_ProfesionModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
