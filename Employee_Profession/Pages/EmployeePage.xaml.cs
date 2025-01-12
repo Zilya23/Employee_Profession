@@ -46,7 +46,8 @@ namespace Employee_Profession.Pages
 
         private void btn_add_Click(object sender, RoutedEventArgs e)
         {
-
+            Employee new_employee = new Employee();
+            NavigationService.Navigate(new EditEmployeePage(new_employee));
         }
     }
 }

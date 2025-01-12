@@ -42,12 +42,55 @@ namespace Employee_Profession.Pages
 
             cb_Profession.ItemsSource = professions;
             cb_Profession.DisplayMemberPath = "Title";
+
+            if(editEmployee.Name == null)
+            {
+                btn_delete.Visibility = Visibility.Hidden;
+                btn_save.Visibility = Visibility.Hidden;
+                btn_save_new.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                btn_delete.Visibility = Visibility.Visible;
+                btn_save.Visibility = Visibility.Visible;
+                btn_save_new.Visibility = Visibility.Hidden;
+            }
             DataContext = this;
         }
 
         private void btn_save_Click(object sender, RoutedEventArgs e)
         {
+            MessageBoxResult dialogResult = MessageBox.Show("Сохрнаить изменения?", "Редактировать", MessageBoxButton.YesNo);
+            if (dialogResult == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    editEmployee.Surname = tb_Surname.Text.Trim();
+                    editEmployee.Name = tb_Name.Text.Trim();
+                    editEmployee.Patronymic = tb_Patronymic.Text.Trim();
+                    editEmployee.Date_of_birth = (DateTime)dp_Birth.SelectedDate;
+                    editEmployee.ID_Gender = (cb_Gender.SelectedItem as Gender).ID;
+                    editEmployee.Date_joining_service = (DateTime)dp_Joing.SelectedDate;
+                    editEmployee.ID_Profession = (cb_Profession.SelectedItem as Profession).ID;
+                    editEmployee.ID_Department = (cb_Department.SelectedItem as Department).ID;
+                    try
+                    {
+                        editEmployee.Date_end_service = (DateTime)dp_End.SelectedDate;
+                    }
+                    catch
+                    {
+                        editEmployee.Date_end_service = null;
+                    }
 
+                    bd_connection.connection.SaveChanges();
+                    MessageBox.Show("Успешно!");
+                    NavigationService.Navigate(new EmployeePage());
+                }
+                catch
+                {
+                    MessageBox.Show("Заполните все обязательные поля");
+                }
+            }
         }
 
         private void btn_back_Click(object sender, RoutedEventArgs e)
@@ -57,7 +100,51 @@ namespace Employee_Profession.Pages
 
         private void btn_delete_Click(object sender, RoutedEventArgs e)
         {
+                MessageBoxResult dialogResult = MessageBox.Show("Вы действительно хотите безвозвратно удалить запись и все связанные с ней данные?", "Удаление", MessageBoxButton.YesNo);
+                if (dialogResult == MessageBoxResult.Yes)
+                {
+                    bd_connection.connection.Employee.Remove(editEmployee);
+                    bd_connection.connection.SaveChanges();
+                    MessageBox.Show("Успешно!");
+                    NavigationService.Navigate(new EmployeePage());
+                }
+            }
 
+        private void btn_save_new_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult dialogResult = MessageBox.Show("Сохрнаить?", "Добавление нового сотрудника", MessageBoxButton.YesNo);
+            if (dialogResult == MessageBoxResult.Yes)
+            {
+                try
+                {
+                    editEmployee.Surname = tb_Surname.Text.Trim();
+                    editEmployee.Name = tb_Name.Text.Trim();
+                    editEmployee.Patronymic = tb_Patronymic.Text.Trim();
+                    editEmployee.Date_of_birth = (DateTime)dp_Birth.SelectedDate;
+                    editEmployee.ID_Gender = (cb_Gender.SelectedItem as Gender).ID;
+                    editEmployee.Date_joining_service = (DateTime)dp_Joing.SelectedDate;
+                    editEmployee.ID_Profession = (cb_Profession.SelectedItem as Profession).ID;
+                    editEmployee.ID_Department = (cb_Department.SelectedItem as Department).ID;
+
+                    try
+                    {
+                        editEmployee.Date_end_service = (DateTime)dp_End.SelectedDate;
+                    }
+                    catch
+                    {
+                        editEmployee.Date_end_service = null;
+                    }
+
+                    bd_connection.connection.Employee.Add(editEmployee);
+                    bd_connection.connection.SaveChanges();
+                    MessageBox.Show("Успешно!");
+                    NavigationService.Navigate(new EmployeePage());
+                }
+                catch
+                {
+                    MessageBox.Show("Заполните все обязательные поля");
+                }
+            }
         }
     }
 }

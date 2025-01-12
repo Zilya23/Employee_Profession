@@ -70,6 +70,19 @@
                 Background="#FF80D9ED"
                 Click="btn_save_Click"/>
 
+        <Button x:Name="btn_save_new"
+                Content="Сохранить"
+                FontSize="25"
+                Grid.Column="7"
+                Grid.ColumnSpan="2"
+                Grid.Row="0"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Right"
+                Foreground="#FF1446A3"
+                BorderBrush="#FF1446A3"
+                Background="#FF80D9ED"
+                Click="btn_save_new_Click"/>
+
         <Button x:Name="btn_delete"
                 Content="Удалить"
                 FontSize="25"
