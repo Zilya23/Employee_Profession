@@ -44,5 +44,10 @@ namespace Employee_Profession.Pages
         {
             NavigationService.Navigate(new ProfessionsPage());
         }
+
+        private void btn_Report_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ReportPage());
+        }
     }
 }

@@ -138,6 +138,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\ReportPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\RolePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -164,6 +168,9 @@
     </Compile>
     <Compile Include="Pages\ProfessionsPage.xaml.cs">
       <DependentUpon>ProfessionsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ReportPage.xaml.cs">
+      <DependentUpon>ReportPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\RolePage.xaml.cs">
       <DependentUpon>RolePage.xaml</DependentUpon>
