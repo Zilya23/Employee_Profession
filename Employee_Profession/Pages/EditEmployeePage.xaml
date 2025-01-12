@@ -194,7 +194,7 @@
                    HorizontalAlignment="Right"
                    Foreground="#FF1446A3"/>
         <ComboBox x:Name="cb_Gender"
-                  SelectedItem="{Binding editEmployee.Gender}"
+                  SelectedItem="{Binding editProfession.Gender}"
                   FontSize="20"
                   Grid.Column="4"
                   Grid.ColumnSpan="3"

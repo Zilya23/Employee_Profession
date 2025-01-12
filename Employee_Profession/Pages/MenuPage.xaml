@@ -50,7 +50,7 @@
                 Foreground="#FF1446A3"
                 BorderBrush="#FF1446A3"
                 Background="#FF80D9ED"
-                Margin="5"/>
+                Margin="5" Click="btn_Department_Click"/>
 
         <Button x:Name="btn_Profession"
                 Content="Профессии"
@@ -60,7 +60,7 @@
                 Foreground="#FF1446A3"
                 BorderBrush="#FF1446A3"
                 Background="#FF80D9ED"
-                Margin="5"/>
+                Margin="5" Click="btn_Profession_Click"/>
 
         <Button x:Name="btn_back"
                 Content="Назад"
