@@ -27,7 +27,7 @@ namespace Employee_Profession.Pages
 
         private void btn_Depart_Dir_Click(object sender, RoutedEventArgs e)
         {
-
+            NavigationService.Navigate(new MenuPage());
         }
 
         private void btn_Employee_Depart_Click(object sender, RoutedEventArgs e)
