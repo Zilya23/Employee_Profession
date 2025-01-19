@@ -16,23 +16,23 @@ using System.Windows.Shapes;
 namespace Employee_Profession.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для RolePage.xaml
+    /// Логика взаимодействия для DirMainPage.xaml
     /// </summary>
-    public partial class RolePage : Page
+    public partial class DirMainPage : Page
     {
-        public RolePage()
+        public DirMainPage()
         {
             InitializeComponent();
         }
 
-        private void btn_Depart_Dir_Click(object sender, RoutedEventArgs e)
+        private void btn_Report_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new DirMainPage());
+            NavigationService.Navigate(new ReportPage());
         }
 
-        private void btn_Employee_Depart_Click(object sender, RoutedEventArgs e)
+        private void btn_back_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new MenuPage());
+            NavigationService.Navigate(new RolePage());
         }
     }
 }

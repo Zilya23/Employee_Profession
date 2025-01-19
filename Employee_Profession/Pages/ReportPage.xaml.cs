@@ -181,7 +181,7 @@ namespace Employee_Profession.Pages
 
         private void btn_back_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new MenuPage());
+            NavigationService.GoBack();
         }
 
         private void btn_EmployeeInWork_Click(object sender, RoutedEventArgs e)

@@ -122,6 +122,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\DirMainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\EditDepartmentPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -158,6 +162,9 @@
   <ItemGroup>
     <Compile Include="Pages\DepartmentsPage.xaml.cs">
       <DependentUpon>DepartmentsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\DirMainPage.xaml.cs">
+      <DependentUpon>DirMainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\EditDepartmentPage.xaml.cs">
       <DependentUpon>EditDepartmentPage.xaml</DependentUpon>
